@@ -1,3 +1,4 @@
 # DevOps Lab 0
-Автор: Ангелина Дементьева
-## Test change for PR
+ФИО: Ангелина Дементьева
+ТГ: demapage
+GitHub: https://github.com/AngelinaDementeva
