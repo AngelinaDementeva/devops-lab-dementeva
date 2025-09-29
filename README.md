@@ -1,4 +1,5 @@
-# DevOps Lab 0
-ФИО: Ангелина Дементьева
-ТГ: demapage
-GitHub: https://github.com/AngelinaDementeva
+# DevOps Lab 0  
+
+**ФИО:** Ангелина Дементьева  
+**Telegram:** [@demapage](https://t.me/demapage)  
+**GitHub:** [AngelinaDementeva](https://github.com/AngelinaDementeva)  
