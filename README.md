@@ -1,4 +1,4 @@
-# DevOps Lab 0  
+# DevOps Labs
 
 **ФИО:** Ангелина Дементьева  
 **Telegram:** [@demapage](https://t.me/demapage)  
