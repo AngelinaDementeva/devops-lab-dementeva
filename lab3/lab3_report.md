@@ -23,6 +23,7 @@
 
 Для сбора системных метрик запущен контейнер Node Exporter:
 
+```
 docker run -d \
   --name node-exporter \
   --restart=unless-stopped \
@@ -35,7 +36,7 @@ docker run -d \
   --path.rootfs=/rootfs \
   --path.sysfs=/host/sys \
   --collector.filesystem.mount-points-exclude="^/(sys|proc|dev|host|etc)($$|/)"
-
+```
 
 После запуска проверили доступность метрик по адресу:
 http://localhost:9100/metrics
@@ -46,6 +47,7 @@ http://localhost:9100/metrics
 
 Создан конфигурационный файл prometheus.yml:
 
+```
 global:
   scrape_interval: 15s
 
@@ -57,10 +59,10 @@ scrape_configs:
   - job_name: 'node-exporter'
     static_configs:
       - targets: ['node-exporter:9100']
-
+```
 
 Далее запущен Prometheus в контейнере:
-
+```
 docker run -d \
   --name prometheus \
   --restart=unless-stopped \
@@ -68,7 +70,7 @@ docker run -d \
   -v $(pwd)/prometheus:/etc/prometheus \
   prom/prometheus \
   --config.file=/etc/prometheus/prometheus.yml
-
+```
 
 ![s_42](s_42.png)  
 ![s_43](s_43.png)  
@@ -76,13 +78,13 @@ docker run -d \
 ## 3. Настройка Grafana
 
 Для визуализации данных запущен контейнер Grafana:
-
+```
 docker run -d \
   --name grafana \
   --restart=unless-stopped \
   -p 3000:3000 \
   grafana/grafana
-
+```
 
 Доступ по адресу http://localhost:3000 (логин: admin, пароль: admin).
 
@@ -102,7 +104,7 @@ URL: http://prometheus:9090
 ## 5. Создание дашборда в Grafana
 
 Создан новый дашборд → панель Time Series → добавлены метрики:
-
+```
 node_cpu_seconds_total
 
 rate(node_cpu_seconds_total{mode="system"}[5m])
@@ -110,14 +112,15 @@ rate(node_cpu_seconds_total{mode="system"}[5m])
 node_memory_MemAvailable_bytes / node_memory_MemTotal_bytes * 100
 
 node_filesystem_avail_bytes{mountpoint="/"}
-
+```
 ![s_46](s_46.png)  
 ![s_47](s_47.png)  
 
 
 ## 6. Проверка работы контейнеров
+```
 docker ps
-
+```
 
 ![s_48](s_48.png)  
 
