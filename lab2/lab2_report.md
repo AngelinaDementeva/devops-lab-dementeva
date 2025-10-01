@@ -6,7 +6,7 @@
 **Year:** 2025  
 **Group:** U4225  
 **Author:** Ангелина Дементьева  
-**Lab:** Lab1  
+**Lab:** Lab2
 **Date of create:** 29.09.2025  
 **Date of finished:** 29.09.2025  
 
