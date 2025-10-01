@@ -9,6 +9,7 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v4
 
@@ -26,12 +27,14 @@ jobs:
         with:
           context: ./lab2
           push: true
-          tags: angelinadementeva/devops-lab-dementeva_lab_2:latest
+          tags: |
+            angelinadementeva/devops-lab-dementeva_lab_2:latest
+            angelinadementeva/devops-lab-dementeva_lab_2:${{ github.ref_name }}
 
-      - name: Deploy
-        run: |
-          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
-            echo "Deploying to production..."
-          else
-            echo "Deploying to development..."
-          fi
+      - name: Deploy (production)
+        if: github.ref == 'refs/heads/main'
+        run: echo "Deploying to production server..."
+
+      - name: Deploy (development)
+        if: github.ref == 'refs/heads/develop'
+        run: echo "Deploying to development server..."
