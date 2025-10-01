@@ -2,24 +2,17 @@ name: CI/CD (lab2 Docker)
 
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:
-
-env:
-  IMAGE_NAME: angelinadementeva/devops-lab-dementeva_lab_2
+    branches:
+      - main
+      - develop
 
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v3
-
-      - name: Set up Buildx
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: Login to Docker Hub
@@ -28,15 +21,17 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
-      - name: Build & Push image (lab2/)
+      - name: Build & Push Docker image
         uses: docker/build-push-action@v6
         with:
           context: ./lab2
-          file: ./lab2/Dockerfile
           push: true
-          tags: |
-            ${{ env.IMAGE_NAME }}:latest
-            ${{ env.IMAGE_NAME }}:${{ github.sha }}
+          tags: angelinadementeva/devops-lab-dementeva_lab_2:latest
 
-      - name: Deploy (placeholder)
-        run: echo "Deploying to production server..."
+      - name: Deploy
+        run: |
+          if [ "${{ github.ref }}" == "refs/heads/main" ]; then
+            echo "Deploying to production..."
+          else
+            echo "Deploying to development..."
+          fi
