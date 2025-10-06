@@ -1,0 +1,54 @@
+
+site_name: Персональный сайт Ангелины Дементьевой
+site_description: Портфолио, проекты и контакты
+site_author: Ангелина Дементьева
+site_url: https://angelinadementeva.github.io/devops-lab-dementeva/
+
+theme:
+  name: material
+  language: ru
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.top
+    - search.highlight
+    - search.share
+    - toc.follow
+
+# Кнопка "Редактировать на GitHub" и ссылка на репозиторий
+repo_name: AngelinaDementeva/devops-lab-dementeva
+repo_url: https://github.com/AngelinaDementeva/devops-lab-dementeva
+
+# Расширения Markdown (красивые блоки, таблицы, заметки)
+markdown_extensions:
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji
+
+plugins:
+  - search
+
+# Иконки соцсетей в футере (опционально)
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/AngelinaDementeva
+    - icon: fontawesome/brands/telegram
+      link: https://t.me/angeline_dev
+    - icon: fontawesome/brands/linkedin
+      link: https://linkedin.com/in/angelina
+
+nav:
+  - Главная: index.md
+  - О себе: about.md
+  - Проекты: projects.md
+  - Контакты: contacts.md
