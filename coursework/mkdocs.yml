@@ -14,6 +14,19 @@ theme:
     - search.highlight
     - search.share
     - toc.follow
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Включить тёмную тему
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Включить светлую тему
 
 # Кнопка "Редактировать на GitHub" и ссылка на репозиторий
 repo_name: AngelinaDementeva/devops-lab-dementeva
